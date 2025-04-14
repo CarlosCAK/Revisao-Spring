@@ -8,7 +8,7 @@ import java.util.List;
 public record ProfessorGetDTO(
         Long id,
         String nome,
-        List<Disciplina> disciplinas
+        List<DisciplinaProfessorDTO> disciplinas
 ) {
 
 }

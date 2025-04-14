@@ -20,7 +20,7 @@ public class Professor {
     @Column(length =  200)
     private String nome;
 
-    @ManyToMany(mappedBy = "professor", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "professor", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     private List<Disciplina> disciplinas;
 
     public Professor() {
@@ -51,6 +51,6 @@ public class Professor {
     }
 
     public ProfessorGetDTO toGetDTO(){
-        return new ProfessorGetDTO(id, nome,disciplinas);
+        return new ProfessorGetDTO(id, nome,disciplinas.stream().map(Disciplina::toDisciplinaProfessorDTO).toList());
     }
 }

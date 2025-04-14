@@ -1,5 +1,6 @@
 package com.RevisaoSpring.revisaoSpring.model;
 
+import com.RevisaoSpring.revisaoSpring.model.dto.DisciplinaProfessorDTO;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -45,5 +46,9 @@ public class Disciplina {
 
     public void setProfessor(List<Professor> professor) {
         this.professor = professor;
+    }
+
+    public DisciplinaProfessorDTO toDisciplinaProfessorDTO(){
+        return new DisciplinaProfessorDTO(this.id, this.nome);
     }
 }

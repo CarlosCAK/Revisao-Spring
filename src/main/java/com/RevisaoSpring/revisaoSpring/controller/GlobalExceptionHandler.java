@@ -17,10 +17,10 @@ public class GlobalExceptionHandler {
     public Professor lidandoComValidator(MethodArgumentNotValidException e){
         return  new Professor();
     }
-    @ExceptionHandler(RuntimeException.class)
-    @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
-    public String lidandoComValidator(RuntimeException e){
-        return  e.getMessage();
-    }
+//    @ExceptionHandler(RuntimeException.class)
+//    @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
+//    public String lidandoComValidator(RuntimeException e){
+//        return  e.getMessage();
+//    }
 
 }

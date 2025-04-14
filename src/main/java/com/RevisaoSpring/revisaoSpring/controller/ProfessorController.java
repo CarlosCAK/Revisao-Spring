@@ -33,19 +33,28 @@ public class ProfessorController {
     }
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Professor criarProfessor(@RequestBody @Valid ProfessorPostDTO  professorPostDTO){
+    public ProfessorGetDTO criarProfessor(@RequestBody @Valid ProfessorPostDTO  professorPostDTO){
 
-        return service.salvar(professorPostDTO);
+        return service.salvar(professorPostDTO).toGetDTO();
     }
     @PutMapping
     @ResponseStatus(HttpStatus.OK)
-    public Professor atualizarProfessor(@RequestBody Professor professor){
-        return service.atualizar(professor);
+    public ProfessorGetDTO atualizarProfessor(@RequestBody Professor professor){
+        return service.atualizar(professor).toGetDTO();
     }
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deletarProfessorPorId(@PathVariable Long id){
          service.removerProfessor(id);
+    }
+
+    @PatchMapping
+    @ResponseStatus(HttpStatus.OK)
+    public ProfessorGetDTO removerDisciplinaProfessor(
+            @RequestParam Long idDisciplina,
+            @RequestParam Long idProfessor
+    ){
+        return service.removerDisciplinaProfessor(idDisciplina,idProfessor).toGetDTO();
     }
 
 }
